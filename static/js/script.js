@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function animate() {
         if (currentStep < sortingSteps.length) {
-            visualizer.drawArray(sortingSteps[currentStep], sortingSteps[currentStep].comparing, sortingSteps[currentStep].swapping);
+            const step = sortingSteps[currentStep];
+            visualizer.drawArray(step.array, step.comparing || [], step.swapping || []);
             currentStep++;
             const speed = 101 - speedInput.value;
             animationId = setTimeout(() => requestAnimationFrame(animate), speed);
