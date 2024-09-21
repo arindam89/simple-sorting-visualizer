@@ -1,34 +1,36 @@
 @import 'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css';
 
-body {
-    font-family: 'Arial', sans-serif;
-}
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
+/* Custom styles that are not easily achievable with Tailwind */
 #sortingCanvas {
-    border: 1px solid #ccc;
-    margin-top: 1rem;
+    border: 1px solid #e2e8f0;
 }
 
-.controls {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+/* Tailwind doesn't provide built-in styling for range inputs */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #e2e8f0;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
 }
 
-.btn {
-    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4299e1;
+    cursor: pointer;
 }
 
-.input {
-    @apply shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline;
-}
-
-.select {
-    @apply block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline;
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4299e1;
+    cursor: pointer;
 }

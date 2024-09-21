@@ -86,30 +86,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayAlgorithmInfo(info) {
         algorithmInfo.innerHTML = `
-            <h2 class="text-2xl font-bold mb-2">${info.name}</h2>
-            <p><strong>Time Complexity:</strong></p>
-            <ul>
+            <h2 class="text-2xl font-bold mb-2 text-blue-600">${info.name}</h2>
+            <p class="mb-2"><strong class="text-gray-700">Time Complexity:</strong></p>
+            <ul class="list-disc list-inside mb-2 text-gray-600">
                 <li>Best: ${info.time_complexity.best}</li>
                 <li>Average: ${info.time_complexity.average}</li>
                 <li>Worst: ${info.time_complexity.worst}</li>
             </ul>
-            <p><strong>Space Complexity:</strong> ${info.space_complexity}</p>
-            <p><strong>Description:</strong> ${info.description}</p>
+            <p class="mb-2"><strong class="text-gray-700">Space Complexity:</strong> <span class="text-gray-600">${info.space_complexity}</span></p>
+            <p class="mb-2"><strong class="text-gray-700">Description:</strong> <span class="text-gray-600">${info.description}</span></p>
         `;
     }
 
     function displayComparisonResults(results) {
         let html = '<table class="w-full text-left border-collapse">';
-        html += '<tr><th>Algorithm</th><th>Execution Time (s)</th></tr>';
+        html += '<thead><tr class="bg-blue-100"><th class="p-2 border">Algorithm</th><th class="p-2 border">Execution Time (s)</th></tr></thead><tbody>';
         
         for (const [alg, data] of Object.entries(results)) {
-            html += `<tr>
-                <td>${data.info.name}</td>
-                <td>${data.execution_time.toFixed(6)}</td>
+            html += `<tr class="hover:bg-gray-100">
+                <td class="p-2 border">${data.info.name}</td>
+                <td class="p-2 border">${data.execution_time.toFixed(6)}</td>
             </tr>`;
         }
         
-        html += '</table>';
+        html += '</tbody></table>';
         comparisonResults.innerHTML = html;
     }
 });
