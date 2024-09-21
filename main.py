@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from sorting import bubble_sort, quick_sort, merge_sort, heap_sort
+from sorting import bubble_sort, quick_sort, merge_sort, heap_sort, radix_sort
 
 app = Flask(__name__)
 
@@ -21,6 +21,8 @@ def sort():
         steps = merge_sort(array)
     elif algorithm == 'heap':
         steps = heap_sort(array)
+    elif algorithm == 'radix':
+        steps = radix_sort(array)
     else:
         return jsonify({'error': 'Invalid algorithm'}), 400
     
