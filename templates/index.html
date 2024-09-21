@@ -12,6 +12,9 @@
         <h1 class="text-3xl font-bold mb-4">Sorting Algorithm Visualizer</h1>
         <div class="controls">
             <input type="text" id="arrayInput" class="input" placeholder="Enter numbers separated by commas">
+            <input type="number" id="arraySizeInput" class="input" placeholder="Array Size" min="5" max="100" value="20">
+            <input type="number" id="minValueInput" class="input" placeholder="Min Value" min="1" max="999" value="1">
+            <input type="number" id="maxValueInput" class="input" placeholder="Max Value" min="1" max="999" value="100">
             <button id="generateBtn" class="btn">Generate Random Array</button>
             <select id="algorithmSelect" class="select">
                 {% for key, algo in algorithms.items() %}

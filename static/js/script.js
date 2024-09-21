@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const arrayInput = document.getElementById('arrayInput');
+    const arraySizeInput = document.getElementById('arraySizeInput');
+    const minValueInput = document.getElementById('minValueInput');
+    const maxValueInput = document.getElementById('maxValueInput');
     const generateBtn = document.getElementById('generateBtn');
     const sortBtn = document.getElementById('sortBtn');
     const algorithmSelect = document.getElementById('algorithmSelect');
@@ -19,8 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const visualizer = new Visualizer(canvas, ctx);
 
     generateBtn.addEventListener('click', () => {
-        const size = 20;
-        currentArray = Array.from({length: size}, () => Math.floor(Math.random() * 100) + 1);
+        const size = parseInt(arraySizeInput.value);
+        const minValue = parseInt(minValueInput.value);
+        const maxValue = parseInt(maxValueInput.value);
+        
+        if (size < 5 || size > 100 || minValue >= maxValue) {
+            alert('Please enter valid array size (5-100) and value range.');
+            return;
+        }
+
+        currentArray = Array.from({length: size}, () => Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue);
         arrayInput.value = currentArray.join(', ');
         visualizer.drawArray(currentArray);
         explanationDiv.textContent = '';
