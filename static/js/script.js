@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const algorithmInfo = document.getElementById('algorithmInfo');
     const compareBtn = document.getElementById('compareBtn');
     const comparisonResults = document.getElementById('comparisonResults');
+    const explanationDiv = document.getElementById('explanation');
 
     let currentArray = [];
     let sortingSteps = [];
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentArray = Array.from({length: size}, () => Math.floor(Math.random() * 100) + 1);
         arrayInput.value = currentArray.join(', ');
         visualizer.drawArray(currentArray);
+        explanationDiv.textContent = '';
     });
 
     sortBtn.addEventListener('click', async () => {
@@ -64,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentStep < sortingSteps.length) {
             const step = sortingSteps[currentStep];
             visualizer.drawArray(step.array, step.comparing || [], step.swapping || []);
+            explanationDiv.textContent = step.explanation;
             currentStep++;
             const speed = 101 - speedInput.value;
             animationId = setTimeout(() => requestAnimationFrame(animate), speed);
