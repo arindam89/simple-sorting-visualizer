@@ -14,16 +14,20 @@
             <input type="text" id="arrayInput" class="input" placeholder="Enter numbers separated by commas">
             <button id="generateBtn" class="btn">Generate Random Array</button>
             <select id="algorithmSelect" class="select">
-                <option value="bubble">Bubble Sort</option>
-                <option value="quick">Quick Sort</option>
-                <option value="merge">Merge Sort</option>
-                <option value="heap">Heap Sort</option>
-                <option value="radix">Radix Sort</option>
+                {% for key, algo in algorithms.items() %}
+                <option value="{{ key }}">{{ algo.name }}</option>
+                {% endfor %}
             </select>
             <input type="range" id="speedInput" min="1" max="100" value="50" class="input">
             <button id="sortBtn" class="btn">Sort</button>
         </div>
         <canvas id="sortingCanvas" width="1000" height="400"></canvas>
+        <div id="algorithmInfo" class="mt-4"></div>
+        <div class="mt-4">
+            <h2 class="text-2xl font-bold mb-2">Performance Comparison</h2>
+            <button id="compareBtn" class="btn">Compare Algorithms</button>
+            <div id="comparisonResults" class="mt-2"></div>
+        </div>
     </div>
     <script src="{{ url_for('static', filename='js/visualizer.js') }}"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
